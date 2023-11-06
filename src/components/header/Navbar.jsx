@@ -32,7 +32,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "text-white px-2 py-1 rounded-lg  bg-gradient-to-r from-rose-700 to-pink-600"
-                    : ""
+                    : "border border-gray-300 rounded btn-ghost"
                 }
               >
                 Home
@@ -47,7 +47,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "text-white px-2 py-1 rounded-lg  bg-gradient-to-r from-rose-700 to-pink-600"
-                    : ""
+                    : "border border-gray-300 rounded btn-ghost"
                 }
               >
                 Add Blog
@@ -61,7 +61,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "text-white px-2 py-1 rounded-lg  bg-gradient-to-r from-rose-700 to-pink-600"
-                    : ""
+                    : "border border-gray-300 rounded btn-ghost"
                 }
               >
                 {/* <span className="flex items-center"> */}
@@ -92,7 +92,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "text-white px-2 py-1 rounded-lg  bg-gradient-to-r from-rose-700 to-pink-600"
-                    : ""
+                    : "border border-gray-300 rounded btn-ghost"
                 }
               >
                 Featured
@@ -107,7 +107,7 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "text-white px-2 py-1 rounded-lg  bg-gradient-to-r from-rose-700 to-pink-600"
-                    : ""
+                    : "border border-gray-300 rounded btn-ghost"
                 }
               >
                 Wishlist
@@ -123,14 +123,14 @@ const Navbar = () => {
                     ? "pending"
                     : isActive
                     ? "text-white px-2 py-1 rounded-lg  bg-gradient-to-r from-rose-700 to-pink-600"
-                    : ""
+                    : "border border-gray-300 rounded btn-ghost"
                 }
               >
                 Register
               </NavLink>
             </li>
             {user ? (
-              <li onClick={handleSignOut} className="cursor-pointer">
+              <li onClick={handleSignOut} className="cursor-pointer btn-ghost border border-gray-300 rounded">
                 Log out
               </li>
             ) : (
@@ -142,7 +142,7 @@ const Navbar = () => {
                       ? "pending"
                       : isActive
                       ? "text-white px-2 py-1 rounded-lg  bg-gradient-to-r from-rose-700 to-pink-600"
-                      : ""
+                      : "border border-gray-400 rounded"
                   }
                 >
                   Log in
