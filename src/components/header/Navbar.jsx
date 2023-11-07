@@ -184,7 +184,7 @@ const Navbar = () => {
               </li>
               <li>
                 {user && (
-                  <span style={{ fontSize: "14px", fontWeight: "400" }}>
+                  <span style={{ fontSize: "14px", fontWeight: "400", color: "blue" }}>
                     {user.email}
                   </span>
                 )}

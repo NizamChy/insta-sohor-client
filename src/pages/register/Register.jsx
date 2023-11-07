@@ -110,7 +110,7 @@ const Register = () => {
                 {/* user name  */}
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text">User Name</span>
+                    <span className="label-text font-semibold">User Name</span>
                   </label>
                   <input
                      type="text" 
