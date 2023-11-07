@@ -21,19 +21,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/addblog",
-        element: <AddBlog></AddBlog> ,
+        element: <AddBlog></AddBlog>,
       },
       {
         path: "/allblogs",
-        element: <AllBlogs></AllBlogs> ,
+        element: <AllBlogs></AllBlogs>,
+        loader: () => fetch('http://localhost:5000/allposts')
       },
       {
         path: "/featured",
-        element: <Featured></Featured> ,
+        element: <Featured></Featured>,
       },
       {
         path: "/wishlist",
-        element: <Wishlist></Wishlist> ,
+        element: <Wishlist></Wishlist>,
       },
 
       {

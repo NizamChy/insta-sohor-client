@@ -49,10 +49,10 @@ const AddBlog = () => {
       console.log(data);
       if(data.insertedId){
         Swal.fire({
-          title: 'Success!',
-          text: 'Product added, to check go to New Arrivals page!',
+          title: 'Shared!',
+          text: 'Your post was shared.',
           icon: 'success',
-          confirmButtonText: 'Cool'
+          confirmButtonText: 'Ok'
         })
       }
     })
