@@ -2,7 +2,7 @@ const Banner = () => {
   return (
     <div>
       <div
-        className="hero h-[73vh]"
+        className="hero h-[77vh]"
         style={{
           backgroundImage:
             "url(https://i.ibb.co/fx491VH/banner-instasohor.jpg)",
