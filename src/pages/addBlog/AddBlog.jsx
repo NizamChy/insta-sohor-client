@@ -8,22 +8,33 @@ const AddBlog = () => {
 
   const { user } = useContext(AuthContext);
 
-  // const handleAddProduct = event => {
-  //   event.preventDefault();
 
-  //   const form = event.target;
 
-  //   const name = form.name.value;
-  //   const image = form.image.value;
-  //   const brand = form.brand.value;
-  //   const type = form.type.value;
-  //   const price = form.price.value;
-  //   const description = form.description.value;
-  //   const rating = form.rating.value;
+  const handleAddPost = event => {
+    event.preventDefault();
 
-  //   const newProduct = {name, image, brand, type, price, description, rating}
+    const form = event.target;
 
-  //   // console.log(newProduct);
+    const name = form.name.value;
+    const title = form.title.value;
+    const image = form.image.value;
+    const category = form.category.value;
+    const descriptionSummary = form.descriptionSummary.value;
+    const descriptionDetail = form.descriptionDetail.value;
+
+    const newPost = {
+        name,
+        title,
+        image,
+        category,
+        descriptionSummary,
+        descriptionDetail,
+        userPhotoURL: user.photoURL, // Get the user's photoURL from the user object
+      userEmail: user.email, // Get the user's email from the user object
+        timestamp: new Date() // Add a timestamp property with the current date and time
+    };
+
+    console.log(newPost);
 
   //   //send data to the server
   //   fetch('https://brand-shop-server-six-vert.vercel.app/product', {
@@ -46,7 +57,7 @@ const AddBlog = () => {
   //     }
   //   })
 
-  // }
+  }
 
   return (
     <div className="bg-[#F4F3F0] p-16 md:p-24 md:pt-12 pb-10 pt-10 rounded">
@@ -130,7 +141,7 @@ const AddBlog = () => {
       long description, 
       submit button */}
 
-      <form>
+      <form onSubmit={handleAddPost}>
         {/* form row Author and Title*/}
         <div className="md:flex mb-4">
             <div className="form-control md:w-1/2">

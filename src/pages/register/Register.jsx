@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 import { AuthContext } from "../../providers/AuthProvider";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 
 const Register = () => {
@@ -30,6 +31,7 @@ const Register = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
 
@@ -53,11 +55,21 @@ const Register = () => {
     }
 
   //   console.log(email, password);
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        toast.success("Sign-up successful");
-        navigate(location?.state ? location.state : "/");
+ // Create the user with email and password
+ createUserWithEmailAndPassword(auth, email, password)
+ .then((result) => {
+   // Set the displayName for the user
+   updateProfile(result.user, {
+     displayName: name,
+   })
+     .then(() => {
+       console.log(result.user);
+       toast.success("Sign-up successful");
+       navigate(location?.state ? location.state : "/");
+     })
+     .catch((error) => {
+       console.error("Error updating displayName: ", error);
+     });
 
         // new user has been created
         // const createdAt = result.user.metadata?.creationTime;
@@ -96,18 +108,18 @@ const Register = () => {
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
               <form onSubmit={handleSignUp} className="card-body">
                 {/* user name  */}
-                {/* <div className="form-control">
+                <div className="form-control">
                   <label className="label">
                     <span className="label-text">User Name</span>
                   </label>
                   <input
-                    type="name"
-                    placeholder="name"
-                    name="name"
-                    className="input input-bordered"
-                    required
+                     type="text" 
+                     placeholder="User Name"
+                     id="name" 
+                     className="input input-bordered"
+                     required
                   />
-                </div> */}
+                </div>
                 {/* user name  */}
                 <div className="form-control">
                   <label className="label">
