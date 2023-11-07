@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+// Postcard.jsx file 
 const Postcard = ({post}) => {
   const {
     name,

@@ -1,3 +1,5 @@
+// AllBlog.jsx file 
+
 import { useLoaderData } from "react-router-dom";
 import Postcard from "./Postcard";
 
