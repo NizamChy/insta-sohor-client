@@ -1,6 +1,13 @@
 // import Swal from 'sweetalert2'
 
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+
 const AddBlog = () => {
+
+
+  const { user } = useContext(AuthContext);
+
   // const handleAddProduct = event => {
   //   event.preventDefault();
 
@@ -42,12 +49,78 @@ const AddBlog = () => {
   // }
 
   return (
-    <div className="bg-[#F4F3F0] p-16 md:p-24 pb-10 pt-10 rounded">
-      <div>
+    <div className="bg-[#F4F3F0] p-16 md:p-24 md:pt-12 pb-10 pt-10 rounded">
+      {/* <div>
         <h2 className="text-xl lg:text-3xl font font-extrabold text-center mb-4">
           Create post
         </h2>
-      </div>
+      </div> */}
+
+                {/* animation button  */}
+          <div className="flex justify-center">
+            <style>
+              {`
+          button-container {
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+          }
+
+          .anim-btn, .anim-btn2 {
+            width: 250px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 0px;
+            color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            background: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5);
+            background-size: 600%;
+            animation: anime 16s linear infinite;
+            display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; 
+          }
+
+          .anim-btn2 {
+            position: absolute;
+            margin-top: -70px;
+            z-index: -1;
+            filter: blur(30px);
+            opacity: 0.8;
+          }
+
+          @keyframes anime {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+        `}
+            </style>
+            <div className="button-container">
+              <button className="anim-btn">
+                {" "}
+                Create post
+
+                <span>
+                <img src="/images/blogging.png" alt="" />
+                </span>
+
+              </button>
+            </div>
+          </div>
+
+          {/* animation button  */}
 
       {/* DONE: Create a form which will take blog information like 
       title,
@@ -60,19 +133,23 @@ const AddBlog = () => {
       <form>
         {/* form row Author and Title*/}
         <div className="md:flex mb-4">
-          <div className="form-control md:w-1/2">
-            <label className="label">
-              <span className="label-text font-semibold lg:text-lg">Author</span>
-            </label>
+            <div className="form-control md:w-1/2">
+             <label className="label">
+               <span className="label-text font-semibold lg:text-lg">Author</span>
+             </label>
             <label className="input-group">
               <input
-                type="text"
-                placeholder="your name or email"
-                name="name"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </div>
+             type="text"
+            placeholder="your name or email"
+            name="name"
+            className="input input-bordered w-full"
+            defaultValue={user ? user.displayName : ""}
+            readOnly={user ? true : false}
+                />
+              </label>
+            </div>
+
+
 
           <div className="form-control md:w-1/2 md:ml-4">
             <label className="label">
