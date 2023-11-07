@@ -76,6 +76,10 @@ You can access the live version of InstaSohor at [https://www.instasohor.com](ht
 
 Feel free to provide feedback or contribute to the project. We welcome any suggestions or improvements to make InstaSohor even better.
 
+## Contributors
+
+- [Nizam Chowdhury]
+
 ---
 
 Enjoy exploring the world of blogs with InstaSohor!
