@@ -5,6 +5,9 @@ import ErrorPage from "../pages/errorPage/ErrorPage";
 import Login from "../pages/login/Login";
 import Register from "../pages/register/Register";
 import AddBlog from "../pages/addBlog/AddBlog";
+import AllBlogs from "../pages/allBlogs/AllBlogs";
+import Featured from "../pages/featured/Featured";
+import Wishlist from "../pages/wishlist/Wishlist";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +22,18 @@ const router = createBrowserRouter([
       {
         path: "/addblog",
         element: <AddBlog></AddBlog> ,
+      },
+      {
+        path: "/allblogs",
+        element: <AllBlogs></AllBlogs> ,
+      },
+      {
+        path: "/featured",
+        element: <Featured></Featured> ,
+      },
+      {
+        path: "/wishlist",
+        element: <Wishlist></Wishlist> ,
       },
 
       {

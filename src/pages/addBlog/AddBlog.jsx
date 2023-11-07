@@ -1,4 +1,4 @@
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -36,26 +36,26 @@ const AddBlog = () => {
 
     console.log(newPost);
 
-  //   //send data to the server
-  //   fetch('https://brand-shop-server-six-vert.vercel.app/product', {
-  //     method: 'POST',
-  //     headers:{
-  //       'content-type': 'application/json'
-  //     },
-  //     body: JSON.stringify(newProduct)
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     console.log(data);
-  //     if(data.insertedId){
-  //       Swal.fire({
-  //         title: 'Success!',
-  //         text: 'Product added, to check go to New Arrivals page!',
-  //         icon: 'success',
-  //         confirmButtonText: 'Cool'
-  //       })
-  //     }
-  //   })
+    //send data to the server
+    fetch('http://localhost:5000/allposts', {
+      method: 'POST',
+      headers:{
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(newPost)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if(data.insertedId){
+        Swal.fire({
+          title: 'Success!',
+          text: 'Product added, to check go to New Arrivals page!',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+      }
+    })
 
   }
 
