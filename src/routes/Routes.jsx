@@ -8,6 +8,7 @@ import AddBlog from "../pages/addBlog/AddBlog";
 import AllBlogs from "../pages/allBlogs/AllBlogs";
 import Featured from "../pages/featured/Featured";
 import Wishlist from "../pages/wishlist/Wishlist";
+import PostDetail from "../pages/postDetail/PostDetail";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/allposts/:id", // Add the new route for post detail
+        element: <PostDetail> </PostDetail> ,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allposts/${params.id}`),
       },
     ],
   },

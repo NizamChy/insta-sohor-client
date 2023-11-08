@@ -1,7 +1,11 @@
 /* eslint-disable react/prop-types */
+
+import { Link } from "react-router-dom";
+
 // Postcard.jsx file
 const Postcard = ({ post }) => {
   const {
+    _id,
     name,
     title,
     image,
@@ -32,7 +36,7 @@ const Postcard = ({ post }) => {
       <div className="relative flex max-w-[24rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
         {/* Check if image is not empty or null before rendering */}
         {image && (
-          <div className="relative m-0 overflow-hidden text-gray-700 bg-transparent rounded-none shadow-none bg-clip-border">
+          <div className="relative m-0 overflow-hidden text-gray-800 bg-transparent rounded-none shadow-none bg-clip-border">
             <img
               className="rounded-t-xl"
               src={image}
@@ -49,8 +53,6 @@ const Postcard = ({ post }) => {
         {title.length > 34 ? `${title.slice(0, 33)}...` : title}
         </h4>
 
-
-
           <p className="block mt-3 font-sans text-md antialiased font-normal leading-relaxed text-gray-700">
             {descriptionSummary.length > 70
               ? descriptionSummary.substring(0, 70) + "..."
@@ -60,6 +62,8 @@ const Postcard = ({ post }) => {
           <div className="flex justify-between mt-2">
             {/* Details */}
             <div>
+
+              <Link to={`/allposts/${_id}`}>
               <button
                 type="button"
                 className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -79,10 +83,12 @@ const Postcard = ({ post }) => {
                   </span>
                 </div>
               </button>
+              </Link>
+
             </div>
             {/* Details button end*/}
-            {/* Wishlist button */}
 
+            {/* Wishlist button */}
             <div>
               <button
                 type="button"
@@ -104,10 +110,11 @@ const Postcard = ({ post }) => {
                 </svg>
               </button>
             </div>
-
             {/* Wishlist button end */}
+
           </div>
         </div>
+
         <div className="flex items-center justify-between p-3 -mt-4 pt-0">
           <div className="grid grid-cols-1 lg:flex">
             <div className="flex items-center ">
@@ -155,7 +162,7 @@ const Postcard = ({ post }) => {
           </div>
           
         </div>
-        <p className="bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 text-xs mx-auto font-semibold mb-3 px-1 rounded-lg">Category: {category}</p>
+        <p className="bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 text-xs mx-auto font-semibold mb-3 px-1 rounded-lg">Category : {category}</p>
       </div>
       {/* Blog Card end */}
     </div>
