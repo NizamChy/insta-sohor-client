@@ -10,6 +10,7 @@ import Featured from "../pages/featured/Featured";
 import Wishlist from "../pages/wishlist/Wishlist";
 import PostDetail from "../pages/postDetail/PostDetail";
 import UpdateBlog from "../pages/updateBlog/UpdateBlog";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addblog",
-        element: <AddBlog></AddBlog>,
+        element: <PrivateRoute><AddBlog></AddBlog></PrivateRoute>,
       },
       {
         path: "/updateblog/:id",
-        element: <UpdateBlog></UpdateBlog>,
+        element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allposts/${params.id}`),
       },
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/wishlist",
-        element: <Wishlist></Wishlist>,
+        element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
         loader: () => fetch("http://localhost:5000/wishlist"),
       },
 
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/allposts/:id", // Add the new route for post detail
-        element: <PostDetail> </PostDetail>,
+        element: <PrivateRoute><PostDetail></PostDetail></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allposts/${params.id}`),
       },
