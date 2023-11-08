@@ -4,7 +4,7 @@ InstaSohor is a fully-featured blog website built using React, Firebase, React R
 
 ## Project Description
 
-- **Live Site URL:** [InstaSohor](https://www.instasohor.com)
+- **Live Site URL:** [InstaSohor](https://insta-sohor.web.app/)
   - Experience a seamless and feature-rich blog platform.
 
 - **User-friendly Interface:**
@@ -57,7 +57,7 @@ To run this project locally and explore its features:
 
 ## Live Demo
 
-You can access the live version of InstaSohor at [https://www.instasohor.com](https://www.instasohor.com). Experience the power of this feature-rich blog platform and enjoy creating and reading blogs.
+You can access the live version of InstaSohor at [https://insta-sohor.web.app/](https://insta-sohor.web.app/). Experience the power of this feature-rich blog platform and enjoy creating and reading blogs.
 
 ## Technologies Used
 
