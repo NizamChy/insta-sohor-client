@@ -7,16 +7,30 @@ import { useState } from "react";
 const AllBlogs = () => {
   const posts = useLoaderData();
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchTitle, setSearchTitle] = useState("");
 
   // Function to handle category selection
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
   };
 
+   // Function to handle search title input
+   const handleSearchTitleChange = (event) => {
+    setSearchTitle(event.target.value);
+  };
+
   // Filter posts based on the selected category
-  const filteredPosts = selectedCategory === "All"
-    ? posts
-    : posts.filter(post => post.category === selectedCategory);
+  // const filteredPosts = selectedCategory === "All"
+  //   ? posts
+  //   : posts.filter(post => post.category === selectedCategory);
+
+  // Filter posts based on the selected category and search title
+  const filteredPosts = posts.filter((post) => {
+    const categoryMatch =
+      selectedCategory === "All" || post.category === selectedCategory;
+    const titleMatch = post.title.toLowerCase().includes(searchTitle.toLowerCase());
+    return categoryMatch && titleMatch;
+  });
 
 
   return (
@@ -25,8 +39,10 @@ const AllBlogs = () => {
         All Blogs: {filteredPosts.length}
       </h2>
 
-      {/* serch bar  */}
-      <div className="relative h-10 w-72 min-w-[200px] mx-auto mb-6">
+      {/* search section  */}
+      <section className="grid md:flex justify-center md:gap-5">
+              {/* category dropdown search bar  */}
+      <div className="relative h-10 w-72 min-w-[200px] mb-6">
         <select 
         value={selectedCategory}
         onChange={handleCategoryChange}
@@ -76,7 +92,43 @@ const AllBlogs = () => {
          <span className="text-[0.8rem] font-semibold">Category</span> 
         </label>
       </div>
-      {/* serch bar  */}
+      {/* category dropdown search bar end */}
+
+      {/* search with title  */}
+      <div className="mb-3">
+        <div className="relative mb-4 flex w-72 flex-wrap items-stretch">
+          <input
+            type="search"
+            value={searchTitle}
+            onChange={handleSearchTitleChange}
+            className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-pink-900 focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="button-addon1" />
+
+
+              <button
+                className="relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-to-pink-600 hover:shadow-lg bg-gradient-to-r from-rose-700 to-pink-600 focus:to-pink-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                type="button"
+                id="button-addon1"
+                data-te-ripple-init
+                data-te-ripple-color="light">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  className="h-5 w-5">
+                  <path
+                    fillRule="evenodd"
+                    d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                    clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          </div>
+      {/* search with title end */}
+      </section>
+      {/* search section end */}
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3">
         {filteredPosts.map((post) => (
