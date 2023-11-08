@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 
@@ -38,7 +39,7 @@ const UpdateBlog = () => {
     const descriptionSummary = form.descriptionSummary.value;
     const descriptionDetail = form.descriptionDetail.value;
 
-    const newPost = {
+    const updatePost = {
         name,
         title,
         image,
@@ -50,23 +51,23 @@ const UpdateBlog = () => {
         timestamp: new Date() // Add a timestamp property with the current date and time
     };
 
-    console.log(newPost);
+    console.log(updatePost);
 
     //send data to the server
-    fetch('http://localhost:5000/allposts', {
-      method: 'POST',
+    fetch(`http://localhost:5000/allposts/${_id}`, {
+      method: 'PUT',
       headers:{
         'content-type': 'application/json'
       },
-      body: JSON.stringify(newPost)
+      body: JSON.stringify(updatePost)
     })
     .then(res => res.json())
     .then(data => {
       console.log(data);
       if(data.insertedId){
         Swal.fire({
-          title: 'Shared!',
-          text: 'Your post was shared.',
+          title: 'Done!',
+          text: 'Your post successfully updated.',
           icon: 'success',
           confirmButtonText: 'Ok'
         })
@@ -153,6 +154,9 @@ const UpdateBlog = () => {
             </div>
   
             {/* animation button  */}
+      
+ <h2 className="lg:text-2xl text-center font-semibold m-3">Title : {title}</h2>
+
   
         {/* DONE: Create a form which will take blog information like 
         title,
@@ -190,6 +194,7 @@ const UpdateBlog = () => {
               <label className="input-group">
                 <input
                   type="text"
+                  defaultValue={title}
                   placeholder="post title"
                   name="title"
                   className="input input-bordered w-full"
@@ -206,6 +211,7 @@ const UpdateBlog = () => {
               <label className="input-group">
                 <input
                   type="text"
+                  defaultValue={image}
                   placeholder="image url"
                   name="image"
                   className="input input-bordered w-full"
@@ -218,7 +224,9 @@ const UpdateBlog = () => {
                 <span className="label-text font-semibold lg:text-lg">Category</span>
               </label>
               <label className="">
-                <select name="category" className="select select-bordered w-full">
+                <select name="category" defaultValue={category} className="select select-bordered w-full">
+
+                
                
                   <option value="Adventures and Travels">
                     Adventures and Travels
@@ -273,6 +281,7 @@ const UpdateBlog = () => {
       <label className="input-group">
         <textarea
           placeholder="Description Summary"
+          defaultValue={descriptionSummary}
           name="descriptionSummary"
           className="input input-bordered w-full h-24" /* Increase the height (h-24) as needed */
         ></textarea>
@@ -288,6 +297,7 @@ const UpdateBlog = () => {
       <label className="input-group">
         <textarea
           placeholder="Description Detail"
+          defaultValue={descriptionDetail}
           name="descriptionDetail"
           className="input input-bordered w-full h-24" /* Increase the height (h-24) as needed */
         ></textarea>
@@ -302,7 +312,7 @@ const UpdateBlog = () => {
                 type="submit"
                 className="mt-6 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2"
               >
-                POST
+                UPDATE
               </button>
             </div>
           </div>
