@@ -9,6 +9,7 @@ import AllBlogs from "../pages/allBlogs/AllBlogs";
 import Featured from "../pages/featured/Featured";
 import Wishlist from "../pages/wishlist/Wishlist";
 import PostDetail from "../pages/postDetail/PostDetail";
+import UpdateBlog from "../pages/updateBlog/UpdateBlog";
 
 const router = createBrowserRouter([
   {
@@ -19,25 +20,32 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/allposts')
+        loader: () => fetch("http://localhost:5000/allposts"),
       },
       {
         path: "/addblog",
         element: <AddBlog></AddBlog>,
       },
       {
+        path: "/updateblog/:id",
+        element: <UpdateBlog></UpdateBlog>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allposts/${params.id}`),
+      },
+      {
         path: "/allblogs",
         element: <AllBlogs></AllBlogs>,
-        loader: () => fetch('http://localhost:5000/allposts')
+        loader: () => fetch("http://localhost:5000/allposts"),
       },
       {
         path: "/featured",
         element: <Featured></Featured>,
-        loader: () => fetch('http://localhost:5000/allposts')
+        loader: () => fetch("http://localhost:5000/allposts"),
       },
       {
         path: "/wishlist",
         element: <Wishlist></Wishlist>,
+        loader: () => fetch("http://localhost:5000/wishlist"),
       },
 
       {
@@ -50,7 +58,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/allposts/:id", // Add the new route for post detail
-        element: <PostDetail> </PostDetail> ,
+        element: <PostDetail> </PostDetail>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allposts/${params.id}`),
       },

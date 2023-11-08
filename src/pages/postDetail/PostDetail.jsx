@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const PostDetail = () => {
   const post = useLoaderData();
@@ -35,6 +35,11 @@ const PostDetail = () => {
       setComments([...comments, comment]);
       setComment('');
     }
+  };
+
+  const handleUpdatePost = () => {
+    // Handle updating the post here
+    // You can implement this function to update the post data
   };
 
   return (
@@ -91,8 +96,16 @@ const PostDetail = () => {
         <p className="text-gray-800 mb-4"><span className='font-semibold'>Description: </span> {descriptionDetail}</p>
 
         <div className='flex flex-col lg:flex-row lg:justify-between mb-4'>
-          <p className="bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 px-2 rounded-lg">Category: {category}</p>
+          <p className="my-auto bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 px-2 rounded-lg">Category: {category}</p>
           <p className="text-blue-800 mt-2 lg:mt-0">Date: {formattedDate}</p>
+              <Link to={`/updateblog/${_id}`}>
+              <button
+              className="bg-cyan-500 text-white p-2 rounded"
+              onClick={handleUpdatePost}
+            >
+              Update Post
+            </button>
+              </Link>
         </div>
 
         <hr className="my-4" />
