@@ -37,7 +37,7 @@ const AddBlog = () => {
     console.log(newPost);
 
     //send data to the server
-    fetch('http://localhost:5000/allposts', {
+    fetch('https://insta-sohor-server.vercel.app/allposts', {
       method: 'POST',
       headers:{
         'content-type': 'application/json'

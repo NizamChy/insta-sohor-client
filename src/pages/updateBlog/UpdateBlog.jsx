@@ -54,7 +54,7 @@ const UpdateBlog = () => {
     console.log(updatePost);
 
     //send data to the server
-    fetch(`http://localhost:5000/allposts/${_id}`, {
+    fetch(`https://insta-sohor-server.vercel.app/allposts/${_id}`, {
       method: 'PUT',
       headers:{
         'content-type': 'application/json'

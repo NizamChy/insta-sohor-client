@@ -46,7 +46,7 @@ const Postcard = ({ post }) => {
       // delete data._id;
 
     // send data to server
-    fetch("http://localhost:5000/wishlist", {
+    fetch("https://insta-sohor-server.vercel.app/wishlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",

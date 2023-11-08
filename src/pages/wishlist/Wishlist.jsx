@@ -7,7 +7,7 @@ const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/wishlist")
+    fetch("https://insta-sohor-server.vercel.app/wishlist")
       .then((response) => response.json())
       .then((data) => {
         setWishlistItems(data);
@@ -25,7 +25,7 @@ const Wishlist = () => {
       confirmButtonText: "Yes, remove it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/wishlist/${_id}`, {
+        fetch(`https://insta-sohor-server.vercel.app/wishlist/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

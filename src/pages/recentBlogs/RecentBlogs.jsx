@@ -10,12 +10,14 @@ const RecentBlogs = () => {
     return timestampB - timestampA; // Sort in descending order
   });
 
+  const recentPosts = posts.slice(0, 6);
+
   return (
     <div>
       <h1 className="text-2xl lg:text-3xl text-center mt-32 mb-6 lg:mb-20">Recent Blog Posts</h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
+        {recentPosts.map((post) => (
           <Postcard key={post._id} post={post}></Postcard>
         ))}
       </div>

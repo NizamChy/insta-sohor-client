@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/allposts"),
+        loader: () => fetch("https://insta-sohor-server.vercel.app/allposts"),
       },
       {
         path: "/addblog",
@@ -31,22 +31,22 @@ const router = createBrowserRouter([
         path: "/updateblog/:id",
         element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allposts/${params.id}`),
+          fetch(`https://insta-sohor-server.vercel.app/allposts/${params.id}`),
       },
       {
         path: "/allblogs",
         element: <AllBlogs></AllBlogs>,
-        loader: () => fetch("http://localhost:5000/allposts"),
+        loader: () => fetch("https://insta-sohor-server.vercel.app/allposts"),
       },
       {
         path: "/featured",
         element: <Featured></Featured>,
-        loader: () => fetch("http://localhost:5000/allposts"),
+        loader: () => fetch("https://insta-sohor-server.vercel.app/allposts"),
       },
       {
         path: "/wishlist",
         element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
-        loader: () => fetch("http://localhost:5000/wishlist"),
+        loader: () => fetch("https://insta-sohor-server.vercel.app/wishlist"),
       },
 
       {
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         path: "/allposts/:id", // Add the new route for post detail
         element: <PrivateRoute><PostDetail></PostDetail></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allposts/${params.id}`),
+          fetch(`https://insta-sohor-server.vercel.app/allposts/${params.id}`),
       },
     ],
   },
