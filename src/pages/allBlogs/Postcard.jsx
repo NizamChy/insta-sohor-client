@@ -153,7 +153,9 @@ const Postcard = ({ post }) => {
               </p>
             </div>
           </div>
+          
         </div>
+        <p className="bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 text-xs mx-auto font-semibold mb-2 px-1 rounded-lg">Category: {category}</p>
       </div>
       {/* Blog Card end */}
     </div>
