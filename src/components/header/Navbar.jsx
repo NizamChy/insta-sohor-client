@@ -130,7 +130,10 @@ const Navbar = () => {
               </NavLink>
             </li>
             {user ? (
-              <li onClick={handleSignOut} className="cursor-pointer btn-ghost border border-gray-200 rounded">
+              <li
+                onClick={handleSignOut}
+                className="cursor-pointer btn-ghost border border-gray-200 rounded"
+              >
                 Log out
               </li>
             ) : (
@@ -159,13 +162,10 @@ const Navbar = () => {
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
                 {/* <img src="https://i.ibb.co/rF8XjJW/image.png" />  */}
-                {user && user.photoURL ? (
-                  <img src={user.photoURL} alt="User Avatar" />
+                {user && user?.photoURL ? (
+                  <img src={user?.photoURL} alt="User Avatar" />
                 ) : (
-                  <img
-                    src="/images/profile3.png"
-                    alt="Default Avatar"
-                  />
+                  <img src="/images/profile3.png" alt="Default Avatar" />
                 )}
               </div>
             </label>
@@ -184,7 +184,13 @@ const Navbar = () => {
               </li>
               <li>
                 {user && (
-                  <span style={{ fontSize: "14px", fontWeight: "400", color: "blue" }}>
+                  <span
+                    style={{
+                      fontSize: "14px",
+                      fontWeight: "400",
+                      color: "blue",
+                    }}
+                  >
                     {user.email}
                   </span>
                 )}
@@ -197,6 +203,20 @@ const Navbar = () => {
                     style={{ fontSize: "15px", fontWeight: "500" }}
                   >
                     Log out
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-6 h-6 text-rose-700"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
+                      />
+                    </svg>
                   </p>
                 ) : (
                   <NavLink

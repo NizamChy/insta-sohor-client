@@ -16,7 +16,7 @@ const Banner = () => {
         <div className="hero-content text-center text-neutral-content">
           <div className="">
             <h1 className="text-xl md:text-2xl lg:text-5xl font-extrabold text-teal-900 bg-gray-300 rounded-lg px-4 py-2 pb-3">
-              Welcome to the InstaSohor!
+              Welcome to InstaSohor App!
             </h1>
             <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-teal-900 font-mono bg-gray-300 rounded-lg px-4 py-2 pb-3">
             Capturing together, One Story at a Time

@@ -195,7 +195,7 @@ const Postcard = ({ post }) => {
               Tania Andrew
             </div> */}
             </div>
-            <div className="ml-36 lg:ml-0 mt-2">
+            <div className="ml-14 lg:ml-0 mt-2">
               <p className="block font-sans text-xs lg:text-sm text-blue-800 antialiased font-semibold ml-1 leading-relaxed text-inherit">
                 {formattedDate}
               </p>

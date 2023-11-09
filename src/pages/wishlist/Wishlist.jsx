@@ -32,7 +32,9 @@ const Wishlist = () => {
           .then((data) => {
             if (data.deletedCount > 0) {
               Swal.fire("Done!", "Post has been removed.", "success");
-              setWishlistItems(wishlistItems.filter((item) => item._id !== _id));
+              setWishlistItems(
+                wishlistItems.filter((item) => item._id !== _id)
+              );
             }
           });
       }
@@ -41,9 +43,11 @@ const Wishlist = () => {
 
   return (
     <div>
-          <div>
-            <h2 className="lg:text-2xl text-center font-semibold m-3">Wishlist : {wishlistItems.length} posts</h2>
-    </div>
+      <div>
+        <h2 className="lg:text-2xl text-center font-semibold m-3">
+          Wishlist : {wishlistItems.length} posts
+        </h2>
+      </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3">
         {wishlistItems.map((wishlistItem) => (

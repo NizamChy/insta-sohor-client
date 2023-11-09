@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const WishlistItem = ({ wishlistItem, handleRemove }) => {
-  const { _id,
+  const {
+    _id,
     name,
     title,
     image,
@@ -11,9 +12,8 @@ const WishlistItem = ({ wishlistItem, handleRemove }) => {
     descriptionDetail,
     userPhotoURL,
     userEmail,
-    timestamp, } = wishlistItem;
-
-
+    timestamp,
+  } = wishlistItem;
 
   // Convert the timestamp to a Date object
   const date = new Date(timestamp);
@@ -27,10 +27,6 @@ const WishlistItem = ({ wishlistItem, handleRemove }) => {
     day: "numeric",
     year: "numeric",
   });
-
-    
-
-
 
   return (
     <div className="m-10 mt-0">
@@ -51,9 +47,9 @@ const WishlistItem = ({ wishlistItem, handleRemove }) => {
           </div>
         )}
         <div className="p-6">
-        <h4 className="block font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-        {title.length > 34 ? `${title.slice(0, 33)}...` : title}
-        </h4>
+          <h4 className="block font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+            {title.length > 34 ? `${title.slice(0, 33)}...` : title}
+          </h4>
 
           <p className="block mt-3 font-sans text-md antialiased font-normal leading-relaxed text-gray-700">
             {descriptionSummary.length > 70
@@ -64,47 +60,57 @@ const WishlistItem = ({ wishlistItem, handleRemove }) => {
           <div className="flex justify-between mt-2">
             {/* Details */}
             <div>
-
               <Link to={`/allposts/${_id}`}>
-              <button
-                type="button"
-                className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-              >
-                <div className="flex">
-                  <span>Details</span>
-                  <span>
-                    <svg
-                      className="w-4 h-6 ml-2"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 10"
-                    >
-                      <path stroke="currentColor" d="M1 5h12m0 0L9 1m4 4L9 9" />
-                    </svg>
-                  </span>
-                </div>
-              </button>
+                <button
+                  type="button"
+                  className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                >
+                  <div className="flex">
+                    <span>Details</span>
+                    <span>
+                      <svg
+                        className="w-4 h-6 ml-2"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 14 10"
+                      >
+                        <path
+                          stroke="currentColor"
+                          d="M1 5h12m0 0L9 1m4 4L9 9"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </button>
               </Link>
-
             </div>
             {/* Details button end*/}
 
             {/* Wishlist button */}
             <div>
               <button
-              onClick={() => handleRemove(_id)}
+                onClick={() => handleRemove(_id)}
                 type="button"
                 className=" text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800 shadow-lg shadow-pink-500/50 dark:shadow-lg dark:shadow-pink-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
               >
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-</svg>
-
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
               </button>
             </div>
             {/* Wishlist button end */}
-
           </div>
         </div>
 
@@ -153,9 +159,10 @@ const WishlistItem = ({ wishlistItem, handleRemove }) => {
               </p>
             </div>
           </div>
-          
         </div>
-        <p className="bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 text-xs mx-auto font-semibold mb-3 px-1 rounded-lg">Category : {category}</p>
+        <p className="bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 text-xs mx-auto font-semibold mb-3 px-1 rounded-lg">
+          Category : {category}
+        </p>
       </div>
       {/* Blog Card end */}
     </div>

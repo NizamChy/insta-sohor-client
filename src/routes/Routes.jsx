@@ -11,6 +11,7 @@ import Wishlist from "../pages/wishlist/Wishlist";
 import PostDetail from "../pages/postDetail/PostDetail";
 import UpdateBlog from "../pages/updateBlog/UpdateBlog";
 import PrivateRoute from "./PrivateRoute";
+import Comment from "../pages/postDetail/Comment";
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,13 @@ const router = createBrowserRouter([
         element: <PrivateRoute><PostDetail></PostDetail></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`https://insta-sohor-server.vercel.app/allposts/${params.id}`),
-      },
+          
+      }, 
+      {
+        path: "/comment",
+        element: <PrivateRoute>   <Comment></Comment>     </PrivateRoute>,
+        loader: () => fetch("https://insta-sohor-server.vercel.app/comment"),
+      },     
     ],
   },
 ]);
