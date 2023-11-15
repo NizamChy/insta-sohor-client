@@ -1,3 +1,5 @@
+// Routes.jsx file 
+
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/home/Home";
@@ -64,7 +66,7 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://insta-sohor-server.vercel.app/allposts/${params.id}`),
           
-      }, 
+      },  
       {
         path: "/comment",
         element: <PrivateRoute>   <Comment></Comment>     </PrivateRoute>,

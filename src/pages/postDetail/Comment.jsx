@@ -1,6 +1,7 @@
+// Comment.jsx file
 
 import { useLoaderData } from "react-router-dom";
-import CommentCard from "./CommentCard";
+import CommentCards from "./CommentCards";
 
 
 const Comment = () => {
@@ -13,9 +14,9 @@ const Comment = () => {
 
       <div className=" grid grid-cols-1 lg:grid-cols-2">
       {
-        comments.map(comment => <CommentCard
+        comments.map(comment => <CommentCards
         key={comment._id}
-        comment={comment}></CommentCard>)
+        comment={comment}></CommentCards>)
       }
       </div>
 

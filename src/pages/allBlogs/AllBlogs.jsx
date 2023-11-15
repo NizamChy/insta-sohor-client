@@ -53,17 +53,19 @@ const AllBlogs = () => {
         <option value="Adventures and Travels">
                   Adventures and Travels
                 </option>
-                
+                <option value="Birds">Birds</option>
                 <option value="Books and Literature">
                   Books and Literature
                 </option>
                 <option value="Culture and History">Culture and History</option>
-                <option value="DIY Art and Crafts">DIY and Crafts</option>
+                <option value="DIY Art and Crafts">DIY Art and Crafts</option>
                 <option value="Education and Learning">
                   Education and Learning
                 </option>
                 <option value="Entertainment">Entertainment</option>
                 <option value="Fashion and Beauty">Fashion and Beauty</option>
+                <option value="Flowers and Plants">Flowers and Plants</option>
+
                 <option value="Food and Cooking">Food and Cooking</option>
                 <option value="Gaming">Gaming</option>
                 <option value="Health, Fitness and Sports">
@@ -76,10 +78,16 @@ const AllBlogs = () => {
                 <option value="Hobbies and Interests">
                   Hobbies and Interests
                 </option>
+                
+                <option value="Illustration and Animation">Illustration and Animation</option>
+                <option value="Islam and Religion">Islam and Religion</option>
                 <option value="Lifestyle">Lifestyle</option>
                 <option value="Motivation">Motivation</option>
                 <option value="Nature">Nature</option>
                 <option value="Others...">Others...</option>
+
+                <option value="Personal Blog">Personal Blog</option>
+                
                 <option value="Pets and Animals">Pets and Animals</option>
                 <option value="Photography">Photography</option>
                 <option value="Product Reviews">Product Reviews</option>

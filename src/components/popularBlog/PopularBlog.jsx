@@ -20,7 +20,7 @@ const PopularBlog = () => {
                   <span className="text-sm">8 Nov, 2023</span>
               </div>
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 "><a href="#">Give us a feedback.</a></h2>
-              <p className="mb-5 font-light text-gray-500 ">We are committed to continually enhancing our app's features, security, and user experience to ensure that InstaSohor remains a safe and enjoyable space for sharing moments, ideas, and memories. Thank you for joining us on this exciting journey as we shape the future of social networking together.</p>
+              <p className="text-justify mb-5 font-light text-gray-500 ">We are committed to continually enhancing our app's features, security, and user experience to ensure that InstaSohor remains a safe and enjoyable space for sharing moments, ideas, and memories. Thank you for joining us on this exciting journey as we shape the future of social networking together.</p>
               <div className="flex justify-between items-center">
                   <div className="flex items-center space-x-4">
                       <img className="w-7 h-7 rounded-full" src="https://lh3.googleusercontent.com/a/ACg8ocLKf1BLue3RS51_uC2O8RIHuDThg8hlwDtfYEYum5blsQ=s96-c" />
@@ -45,7 +45,7 @@ const PopularBlog = () => {
                   <span className="text-sm">8 Nov, 2023</span>
               </div>
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 "><a href="#">Join us now.</a></h2>
-              <p className="mb-5 font-light text-gray-500 ">
+              <p className="text-justify mb-5 font-light text-gray-500 ">
               Welcome to InstaSohor, where you can freely express your thoughts and stay updated on what others are sharing. Explore a wide range of categories that cater to your interests and connect with a global community. InstaSohor is your gateway to sharing, discovering, and connecting with the world.
               </p>
               <div className="flex justify-between items-center">

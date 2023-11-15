@@ -41,6 +41,7 @@ const WishlistItem = ({ wishlistItem, handleRemove }) => {
               alt="image"
               style={{
                 height: "250px", // Adjust the height as per your requirements
+                width: "400px",
                 objectFit: "cover",
               }}
             />
@@ -115,7 +116,7 @@ const WishlistItem = ({ wishlistItem, handleRemove }) => {
         </div>
 
         <div className="flex items-center justify-between p-3 -mt-4 pt-0">
-          <div className="grid grid-cols-1 lg:flex">
+          <div className="grid grid-cols-1 ">
             <div className="flex items-center ">
               {/* <img
               alt="user photo url"
@@ -153,8 +154,8 @@ const WishlistItem = ({ wishlistItem, handleRemove }) => {
               Tania Andrew
             </div> */}
             </div>
-            <div className="ml-36 lg:ml-0 mt-2">
-              <p className="block font-sans text-xs lg:text-sm text-blue-800 antialiased font-semibold ml-1 leading-relaxed text-inherit">
+            <div className="ml-14 mt-2">
+              <p className="font-sans text-xs lg:text-sm text-blue-800 font-semibold ml-1 ">
                 {formattedDate}
               </p>
             </div>

@@ -1,8 +1,13 @@
+//PostDetail.jsx file
+
 import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
+import { useEffect } from "react";
+import CommentCards from "./CommentCards";
 
 const PostDetail = () => {
   const post = useLoaderData();
@@ -21,6 +26,23 @@ const PostDetail = () => {
   } = post;
 
   const { user } = useContext(AuthContext);
+
+  // ... (Previous code)
+
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    // Fetch comments for the specific post
+    fetch("https://insta-sohor-server.vercel.app/comment")
+      .then((res) => res.json())
+      .then((data) => {
+        // Filter comments based on postId equal to _id
+        const postComments = data.filter((comment) => comment.postId === _id);
+        setComments(postComments);
+      });
+  }, [_id]);
+
+  // ... (Previous code)
 
   const canUpdatePost = user && user.email === userEmail;
 
@@ -70,42 +92,67 @@ const PostDetail = () => {
     });
   };
 
-  const handleAddComment = (event) => {
+  const [commentInput, setCommentInput] = useState("");
+
+  const handleAddComment = async (event) => {
     event.preventDefault();
-    const form = event.target;
-    const name = user.displayName;
-    const photo = user?.photoURL;
-    const postId = _id;
-    const postTitle = title;
-    const comment = form.comment.value;
-    const postImage = image;
 
-    const newComment = {
-      name,
-      photo,
-      comment,
-      postId,
-      postTitle,
-      postImage,
-      timestamp: new Date(),
-    };
-    console.log(newComment);
+    if (user.email !== userEmail) {
+      const form = event.target;
+      const name = user.displayName;
+      const commenterEmail = user.email;
+      const photo = user?.photoURL;
+      const postId = _id;
+      const postTitle = title;
+      const comment = form.comment.value;
+      const postImage = image;
 
-    //send data to server
-    fetch("https://insta-sohor-server.vercel.app/comment", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newComment),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      const newComment = {
+        name,
+        commenterEmail,
+        photo,
+        comment,
+        postId,
+        postTitle,
+        postImage,
+        timestamp: new Date(),
+      };
+
+      console.log(newComment);
+
+      try {
+        // Send data to the server
+        const response = await fetch("https://insta-sohor-server.vercel.app/comment", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newComment),
+        });
+
+        const data = await response.json();
+
         if (data.insertedId) {
+
+          // Reload the page after 1 second
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+          // Update the local state immediately after adding the new comment
+          setComments((prevComments) => [...prevComments, newComment]);
+
+          // Clear the comment input field
+          setCommentInput("");
+
+          // Display a success toast
           toast.success("Comment added.");
         }
-      });
+      } catch (error) {
+        console.error("Error adding comment:", error);
+      }
+    } else {
+      toast.error("Author can't comment on their own blog.");
+    }
   };
 
   return (
@@ -149,18 +196,18 @@ const PostDetail = () => {
           </div>
         </div>
         {/* profile pic and name  */}
-        <h1 className="text-2xl font-bold mb-2">{title}</h1>
-        <p className="text-gray-500 mb-4">
-          <span className="font-bold">Summary: </span> {descriptionSummary}
+        <h1 className="mt-2 text-2xl font-bold mb-2">{title}</h1>
+        <p className="leading-8 text-justify text-gray-600 mb-4">
+          <span className="font-semibold">Summary: </span> {descriptionSummary}
         </p>
-        <p className="text-gray-800 mb-4">
+        <p className="leading-8 text-justify text-gray-800 mb-4">
           <span className="font-semibold">Description: </span>{" "}
           {descriptionDetail}
         </p>
 
         <div className="flex flex-col lg:flex-row lg:justify-between mb-4">
           <p className="text-center my-auto bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 px-2 rounded-lg">
-            Category: {category}
+            Category : {category}
           </p>
           <p className="text-blue-800 mt-2 lg:mt-0">Date: {formattedDate}</p>
         </div>
@@ -219,27 +266,42 @@ const PostDetail = () => {
               rows="4"
               placeholder="Add your comment..."
               name="comment"
+              value={commentInput}
+              onChange={(e) => setCommentInput(e.target.value)}
             />
             <br />
 
-
-           
-              <div>
-                <button
-                  type="submit"
-                  className="bg-blue-500 text-white p-2 rounded mt-2"
-                >
-                  Add Comment
-                </button>
-              </div>
-
-            
-
-
+            <div>
+              <button
+                type="submit"
+                className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 p-2 rounded mt-2"
+              >
+                Add Comment
+              </button>
+            </div>
           </div>
         </form>
 
+        <hr className="my-4" />
 
+        {/* Comment Section  */}
+        <div className="w-full">
+          <div>
+            <h2 className="text-center font-semibold text-2xl">Comments</h2>
+            <br />
+          </div>
+          <ul>
+            {comments
+              .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+              .map((comment) => (
+                <li key={comment._id}>
+                  <CommentCards comment={comment}
+                  setComments={setComments}></CommentCards>
+                </li>
+              ))}
+          </ul>
+        </div>
+        {/* Comment Section  */}
 
         {/* {comments.map((comment, index) => (
           <div key={index} className="bg-gray-100 p-2 my-2 rounded">
@@ -247,19 +309,24 @@ const PostDetail = () => {
           </div>
         ))} */}
 
-<div className="flex justify center">
-        
+        <div>
+        <hr className="my-4" />
+        </div>
 
-        <Link to="/comment">
-          <button
-            className="bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg text-white p-2 rounded mt-2"
-          >
-            See all comments
-          </button>
-        </Link>
-      </div>
-      </div>
 
+
+        {/* See all button  */}
+        {/* <div className="flex justify center">
+          <Link to="/comment">
+            <button className="bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg text-white p-2 rounded mt-2">
+              See all comments
+            </button>
+          </Link>
+        </div> */}
+        {/* See all button  */}
+
+
+      </div>
     </div>
   );
 };

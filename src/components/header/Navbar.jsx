@@ -177,7 +177,7 @@ const Navbar = () => {
                 <a className="justify-between">
                   {user && (
                     <span style={{ fontSize: "15px", fontWeight: "500" }}>
-                      {user.displayName}
+                      {user?.displayName}
                     </span>
                   )}
                 </a>
@@ -191,7 +191,7 @@ const Navbar = () => {
                       color: "blue",
                     }}
                   >
-                    {user.email}
+                    {user?.email}
                   </span>
                 )}
               </li>
