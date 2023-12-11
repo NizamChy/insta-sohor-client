@@ -195,6 +195,27 @@ const Navbar = () => {
                   </span>
                 )}
               </li>
+              {/* profile  */}
+              <li>
+                {
+                  user && (
+                    <NavLink
+                    to="/profile"
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "text-white px-2 py-1 rounded-lg bg-gradient-to-r from-rose-700 to-pink-600"
+                        : ""
+                    }
+                    style={{ fontSize: "15px", fontWeight: "500" }}
+                  >
+                    Profile
+                  </NavLink>
+                  )
+                }
+              </li>
+              {/* profile  */}
               <li>
                 {user ? (
                   <p
